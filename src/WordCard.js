@@ -8,7 +8,7 @@ const prepareStateFromWord = (given_word) => {
     return {
         word,
         chars,
-        attempt: 1,
+        attempt: 3,
         guess: [],
         completed: false
     }
@@ -26,20 +26,25 @@ export default class WordCard extends Component{
     
     activationHandler = (c) => {
         console.log(`${c} has been activated.`)
+        
         let guess = [...this.state.guess, c]
         this.setState({guess})
+        
         if(guess.length == this.state.chars.length){
-            if(guess.join('').toString() == this.state.word){
+            console.log(`${guess.join('').toString()} ${this.state.chars.join('').toString()}`)
+            if(guess.join('').toString() == this.state.chars.join('').toString()){
                 this.setState({guess: [], completed: true})
-                document.getElementById('result').innerHTML = `You Win`
+                document.getElementById('result').innerHTML = `You Win!!!!`
             }
             else{
-                this.setState({guess: [], attempt: this.state.attempt + 1})
-                document.getElementById('result').innerHTML = `Try again (${this.state.attempt})  `
-                    if(this.state.attempt == 3){
+                this.setState({guess: [], attempt: this.state.attempt - 1})
+                document.getElementById('result').innerHTML = `You have "${this.state.attempt}" rounds  `
+                    if(this.state.attempt == 0){
                         document.getElementById('result').innerHTML = `GameOver `
-                        setTimeout(() =>  window.location.reload(false),2000) 
+                        document.getElementById('correct_word').innerHTML = `Correct Word  = ${this.state.chars.join('').toString()}`
+                        setTimeout(() =>  window.location.reload(false),5000) 
                     }
+                    
             }
         }
     }
@@ -48,7 +53,7 @@ export default class WordCard extends Component{
     render(){
         return(
             <div>
-            { Array.from(this.props.value).map((c,i) => <CharacterCard value={c} key={i} activationHandler={this.activationHandler}/>)}
+            { Array.from(this.props.value).map((c,i) => <CharacterCard value={c} key={i} activationHandler={this.activationHandler} {...this.state}/>)}
             </div>
         );
     }
