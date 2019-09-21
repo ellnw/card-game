@@ -31,10 +31,16 @@
   margin: 2em;
   user-select: none;
 }
-
+.button{
+  text-align: center;
+  display: inline-block;
+  font-size: 3em;
+  box-shadow: 0 4px 8px 0 rgba(17, 247, 255, 0.2);
+  
+}
 .activeCard{
   color: aqua;
-  background: rgb(0, 0, 0); 
+  background: rgb(0, 153, 255); 
 }
 @keyframes App-logo-spin {
   from {
