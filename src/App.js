@@ -18,6 +18,7 @@ class App extends Component{
   constructor(props){
     super(props)
     this.state = {
+      isNextLevel: false,
       level: 0,
       word: word[0][Math.floor(Math.random()*word[0].length)]
     };
@@ -31,10 +32,16 @@ class App extends Component{
     let currentLevel  = this.state.level
     this.setState({
       level: currentLevel+1,
-      word: word[currentLevel+1][Math.floor(Math.random()*word[currentLevel].length)]
+      word: word[currentLevel+1][Math.floor(Math.random()*word[currentLevel].length)],
+      isNextLevel: true
     });
     console.log(this.state.word)
   }
+
+  reset = () => {
+    this.setState({isNextLevel : false})
+  }
+  
   render(){
     console.log(this.state.word)
     return(
@@ -45,7 +52,7 @@ class App extends Component{
         {
          
          
-        } <WordCard value={this.state.word}/> 
+        } <WordCard value={this.state.word} isNextLevel = {this.state.isNextLevel} reset = {this.reset}/> 
           <h1 id = 'result'> </h1>
           <h2 id="correct_word"> </h2>
         

@@ -23,8 +23,11 @@ export default class WordCard extends Component{
         console.log(this.props.value)
         this.state = prepareStateFromWord(this.props.value)        
          console.log(this.state.word)
+     
     }
     
+ 
+
     activationHandler = (c) => {
         console.log(`${c} has been activated.`)
         this.changeLevel()
@@ -32,6 +35,7 @@ export default class WordCard extends Component{
         console.log(this.state.word)
         let guess = [...this.state.guess, c]
         this.setState({guess})
+        
         if(guess.length == this.state.chars.length){
             console.log(`${guess.join('').toString()} ${this.state.chars.join('').toString()}`)
             if(guess.join('').toString() == this.state.chars.join('').toString()){
@@ -53,10 +57,14 @@ export default class WordCard extends Component{
     }
 
     changeLevel = () => {
-        this.setState({
-            word: this.props.value,
-            chars : _.shuffle(Array.from(this.props.value))
-        })
+        if(this.props.isNextLevel){
+            this.setState({
+                word: this.props.value,
+                chars : _.shuffle(Array.from(this.props.value))
+            })
+            this.props.reset()
+        }
+
     }
     render(){
         console.log(this.props.value)
