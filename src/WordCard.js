@@ -20,14 +20,16 @@ export default class WordCard extends Component{
 
     constructor(props){
         super(props)
-        this.state = prepareStateFromWord(this.props.value)
-        console.log(props.isSurrenderConfirm);
-      
+        console.log(this.props.value)
+        this.state = prepareStateFromWord(this.props.value)        
+         console.log(this.state.word)
     }
     
     activationHandler = (c) => {
         console.log(`${c} has been activated.`)
-        
+        this.changeLevel()
+        this.forceUpdate()
+        console.log(this.state.word)
         let guess = [...this.state.guess, c]
         this.setState({guess})
         if(guess.length == this.state.chars.length){
@@ -35,7 +37,7 @@ export default class WordCard extends Component{
             if(guess.join('').toString() == this.state.chars.join('').toString()){
                 this.setState({guess: [], completed: true})
                 document.getElementById('result').innerHTML = `Victory You Win!!!!`
-                
+
             }
             else{
                 this.setState({guess: [], attempt: this.state.attempt - 1})
@@ -43,15 +45,21 @@ export default class WordCard extends Component{
                     if(this.state.attempt == 0){
                         document.getElementById('result').innerHTML = `GameOver `
                         document.getElementById('correct_word').innerHTML = `Correct Word  = ${this.state.chars.join('').toString()}`
-                        setTimeout(() =>  window.location.reload(false),5000) 
+                        // setTimeout(() =>  window.location.reload(false),5000) 
                     }
                     
             }
         }
     }
 
-    
+    changeLevel = () => {
+        this.setState({
+            word: this.props.value,
+            chars : _.shuffle(Array.from(this.props.value))
+        })
+    }
     render(){
+        console.log(this.props.value)
         return(
             <div>
             { Array.from(this.props.value).map((c,i) => <CharacterCard value={c} key={i} activationHandler={this.activationHandler} {...this.state}/>)}

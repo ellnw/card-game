@@ -6,7 +6,8 @@ import './App.css';
 const word = [
               ['Ell','wor'],
               ['hell','swim'],
-              ['hello','worlds']
+              ['hello','worlds'],
+              ['hellos','lynlss'],
             ]
 
 //const word1 = ['Hello', 'Words']
@@ -18,7 +19,7 @@ class App extends Component{
     super(props)
     this.state = {
       level: 0,
-      word: word[0][Math.floor(Math.random()*word.length)]
+      word: word[0][Math.floor(Math.random()*word[0].length)]
     };
     }
 
@@ -27,18 +28,24 @@ class App extends Component{
   }
 
   nxt_level = () => {
+    let currentLevel  = this.state.level
     this.setState({
-      level: this.state.level+1,
-      word: word[this.state.level+1][Math.floor(Math.random()*word.length)]
+      level: currentLevel+1,
+      word: word[currentLevel+1][Math.floor(Math.random()*word[currentLevel].length)]
     });
+    console.log(this.state.word)
   }
   render(){
+    console.log(this.state.word)
     return(
       <div className="App">
         <div className = "titleBg">
         <h0 id = "title">Welcome to Word Random Game</h0>
         </div>
-          <WordCard value={this.state.word}/> 
+        {
+         
+         
+        } <WordCard value={this.state.word}/> 
           <h1 id = 'result'> </h1>
           <h2 id="correct_word"> </h2>
         
