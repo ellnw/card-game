@@ -1,6 +1,8 @@
 .App {
   text-align: center;
+ 
 }
+
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -27,9 +29,18 @@
   text-align: center;
   width: 3em;
   font-size: 2em;
-  box-shadow: 0 4px 8px 0 rgba(255, 0, 0, 0.8);
+  box-shadow: 0 8px 15px 0 rgb(255, 0, 0);
   margin: 2em;
   user-select: none;
+}
+.bg{
+  background-color: rgb(0, 0, 0);
+}
+.titleBg{
+  background-color: rgb(0, 0, 0);
+}
+#title{
+  color: rgb(255, 255, 255);
 }
 .button{
   text-align: center;
@@ -44,6 +55,10 @@
   font-size: 16px;
   cursor: pointer;
   
+}
+
+#title{
+  font-size: 50px;
 }
 .activeCard{
   color: aqua;
