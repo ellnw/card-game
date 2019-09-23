@@ -4,10 +4,10 @@ import './App.css';
 //import CharacterCard from './CharacterCard';
 //const word = "Hello";
 const word = [
-              ['Ell','wor'],
-              ['hell','swim'],
-              ['hello','worlds'],
-              ['hellos','lynlss'],
+              ['ELL','WOR'],
+              ['HELL','SWIM'],
+              ['HELLO','WORLDS'],
+              ['HELLOS','LYNLSS'],
             ]
 
 //const word1 = ['Hello', 'Words']
@@ -41,7 +41,7 @@ class App extends Component{
   reset = () => {
     this.setState({isNextLevel : false})
   }
-  
+
   render(){
     console.log(this.state.word)
     return(
