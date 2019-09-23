@@ -49,12 +49,11 @@ class App extends Component{
         <div className = "titleBg">
         <h0 id = "title">Welcome to Word Random Game</h0>
         </div>
-        {
-         
-         
-        } <WordCard value={this.state.word} isNextLevel = {this.state.isNextLevel} reset = {this.reset}/> 
+        <div className = "text">
+         <WordCard value={this.state.word} isNextLevel = {this.state.isNextLevel} reset = {this.reset}/> 
           <h1 id = 'result'> </h1>
           <h2 id="correct_word"> </h2>
+        </div>
         
         <div className = "bg">
           <button id="restart" class="button" onClick={this.restart}>Restart</button>
