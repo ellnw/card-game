@@ -8,6 +8,8 @@ const word = [
               ['HELL','SWIM'],
               ['HELLO','WORLDS'],
               ['HELLOS','LYNLSS'],
+              ['abcdefg','good luck'],
+
             ]
 
 //const word1 = ['Hello', 'Words']
